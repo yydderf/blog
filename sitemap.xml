@@ -14,6 +14,9 @@
     <loc>https://blog.ydderf.dev/tags/malware/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://blog.ydderf.dev/tags/operatingsystem/</loc>
+    <lastmod>2025-01-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://blog.ydderf.dev/posts/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
@@ -26,13 +29,14 @@
     <loc>https://blog.ydderf.dev/posts/windows-dll/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://blog.ydderf.dev/posts/windows-process/</loc>
+    <lastmod>2025-01-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://blog.ydderf.dev/tags/windowsapi/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://blog.ydderf.dev/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://blog.ydderf.dev/posts/windows-process/</loc>
   </url><url>
     <loc>https://blog.ydderf.dev/categories/</loc>
   </url>
