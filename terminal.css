@@ -3,10 +3,10 @@
 
 :root {
   --background: #080d19;
-  --foreground: #eceae5;
+  --foreground: #acacac;
   --accent: #8fb3de;
   --radius: 0;
-  --font-size: 0.75rem;
+  --font-size: 0.90rem;
   --line-height: 1.54em;
 }
 
