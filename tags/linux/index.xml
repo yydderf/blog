@@ -14,7 +14,7 @@
       
       <guid>https://blog.ydderf.dev/posts/arch-linux-installation/</guid>
       <description>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
-&lt;h5 id=&#34;install-objects&#34;&gt;install objects&lt;/h5&gt;
+&lt;h5 id=&#34;install-targets&#34;&gt;install targets&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;base&lt;/li&gt;
 &lt;li&gt;linux&lt;/li&gt;
@@ -54,7 +54,7 @@ to get the network access back, the iso file that installed the operating system
 &lt;/ul&gt;
 &lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;</description>
       <content>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
-&lt;h5 id=&#34;install-objects&#34;&gt;install objects&lt;/h5&gt;
+&lt;h5 id=&#34;install-targets&#34;&gt;install targets&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;base&lt;/li&gt;
 &lt;li&gt;linux&lt;/li&gt;

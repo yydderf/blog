@@ -14,7 +14,7 @@
       
       <guid>https://blog.ydderf.dev/posts/arch-linux-installation/</guid>
       <description>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
-&lt;h5 id=&#34;install-objects&#34;&gt;install objects&lt;/h5&gt;
+&lt;h5 id=&#34;install-targets&#34;&gt;install targets&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;base&lt;/li&gt;
 &lt;li&gt;linux&lt;/li&gt;
@@ -54,7 +54,7 @@ to get the network access back, the iso file that installed the operating system
 &lt;/ul&gt;
 &lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;</description>
       <content>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
-&lt;h5 id=&#34;install-objects&#34;&gt;install objects&lt;/h5&gt;
+&lt;h5 id=&#34;install-targets&#34;&gt;install targets&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;base&lt;/li&gt;
 &lt;li&gt;linux&lt;/li&gt;
@@ -209,8 +209,6 @@ The following assumes that &lt;code&gt;user32.dll&lt;/code&gt; is not automatica
       
       <guid>https://blog.ydderf.dev/posts/windows-process/</guid>
       <description>&lt;h1 id=&#34;windows-process&#34;&gt;Windows Process&lt;/h1&gt;
-&lt;h3 id=&#34;description&#34;&gt;Description&lt;/h3&gt;
-&lt;p&gt;Contains information about the resources used by a process on windows, and the characteristics a process can have.&lt;/p&gt;
 &lt;h3 id=&#34;memory-types&#34;&gt;Memory Types&lt;/h3&gt;
 &lt;p&gt;A process can have 3 different types of memory&lt;/p&gt;
 &lt;ul&gt;
@@ -221,8 +219,6 @@ The following assumes that &lt;code&gt;user32.dll&lt;/code&gt; is not automatica
 &lt;h3 id=&#34;process-environment-block-peb&#34;&gt;Process Environment Block (PEB)&lt;/h3&gt;
 &lt;p&gt;Contains information about a process, such as its&lt;/p&gt;</description>
       <content>&lt;h1 id=&#34;windows-process&#34;&gt;Windows Process&lt;/h1&gt;
-&lt;h3 id=&#34;description&#34;&gt;Description&lt;/h3&gt;
-&lt;p&gt;Contains information about the resources used by a process on windows, and the characteristics a process can have.&lt;/p&gt;
 &lt;h3 id=&#34;memory-types&#34;&gt;Memory Types&lt;/h3&gt;
 &lt;p&gt;A process can have 3 different types of memory&lt;/p&gt;
 &lt;ul&gt;

@@ -199,46 +199,7 @@
 
         <div class="post-content">
           
-            <h1 id="arch-linux-installation">Arch Linux Installation</h1>
-<h5 id="install-objects">install objects</h5>
-<ul>
-<li>base</li>
-<li>linux</li>
-<li>linux-firmware</li>
-<li>vim (for editing files)</li>
-<li>man-db (for man pages)</li>
-<li>man-pages</li>
-<li>dhcpcd</li>
-<li>amd-ucode / intel-ucode ([[microcode]])</li>
-<li>lvm2 (for lvm partitions)</li>
-</ul>
-<h5 id="optional">optional</h5>
-<ul>
-<li>git</li>
-<li>base-devel</li>
-</ul>
-<blockquote>
-<p>if <code>dhcpcd</code> is not installed, and arch is installed in an emulated environment
-the newly installed operating system would not have network access
-to get the network access back, the iso file that installed the operating system is needed</p>
-</blockquote>
-<ul>
-<li>use <code>fdisk -l</code> to identify the <code>root partition</code></li>
-<li>use <code>mount /dev/sda3 /mnt</code> to mount the <code>root partition</code>
-<ul>
-<li>(assuming the root partition is in <code>/dev/sda3</code>)</li>
-</ul>
-</li>
-<li>use mount <code>/dev/sda1 /mnt/boot</code> to mount the <code>boot partition</code>
-<ul>
-<li>(assuming the boot partition is int `/dev/sda1)</li>
-</ul>
-</li>
-<li>swap on any swap partition if any exist using <code>swapon /dev/sda2</code></li>
-<li>use <code>arch-chroot /mnt</code> into the system</li>
-<li>install the missing services using <code>pacman -S &lt;target&gt;</code></li>
-</ul>
-<h3 id="references">References</h3>
+            <p>Some targets that should be installed when installing arch linux on the host</p>
           
         </div>
 
