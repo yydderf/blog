@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title> :: ydderf&#39;s blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tag### Description
+Contains information about the resources used by a process on windows, and the characteristics a process can have.
+Memory Types A process can have 3 different types of memory
+Private memory - dedicated to a single process, not shared by other processes. Mapped memory - can be shared between multiple processes, examples: shared libraries, shared memory segments, and shared files. Image memory - contains code and data of an executable file. used to store the code and data that is used by the process. often related to ==DLL files== loaded into a process&rsquo;s address space. Process Environment Block (PEB) Contains information about a process, such as its
+" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://blog.ydderf.dev/posts/windows-process/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/buttons.min.2bc533403a27dfe0e93105a92502b42ce4587e2e4a87d9f7d349e51e16e09478.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/code.min.00125962708925857e7b66dbc58391d55be1191a3d0ce2034de8c9cd2c481c36.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/fonts.min.4881f0c525f3ce2a1864fb6e96676396cebe1e6fcef1933e8e1dde7041004fb5.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/footer.min.4a40c23d262136283e3a77660b9ed4fdcceb18c394b396ec986c1b7e9d8e43ac.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/header.min.b6fb4423cf82a9f9d7abc9cd010223fa3d70a6526a3f28f8e17d814c06e18f9e.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/main.min.fe8dc560fccb53a458b0db19ccb7b265764ac46b68596b7e099c6793054dd457.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/menu.min.83637a90d903026bc280d3f82f96ceb06c5fc72b7c1a8d686afb5bbf818a29f7.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/pagination.min.82f6400eae7c7c6dc3c866733c2ec0579e4089608fea69400ff85b3880aa0d3c.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/post.min.fc74ca360273c1d828da3c02b8174eba435607b369d98418ccc6f2243cd4e75d.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/prism.min.9023bbc24533d09e97a51a0a42a5a7bfe4c591ae167c5551fb1d2191d11977c0.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/syntax.min.cc789ed9377260d7949ea4c18781fc58959a89287210fe4edbff44ebfc1511b6.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/terminal.min.4b367d85d0d0061435650561285afed36c46a7cf8dc6d7ed5642d98e589fa622.css">
+
+  
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+<link rel="stylesheet" href="https://blog.ydderf.dev/terminal.css">
+
+
+
+
+<link rel="shortcut icon" href="https://blog.ydderf.dev/favicon.png">
+<link rel="apple-touch-icon" href="https://blog.ydderf.dev/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="">
+<meta property="og:description" content="Tag### Description
+Contains information about the resources used by a process on windows, and the characteristics a process can have.
+Memory Types A process can have 3 different types of memory
+Private memory - dedicated to a single process, not shared by other processes. Mapped memory - can be shared between multiple processes, examples: shared libraries, shared memory segments, and shared files. Image memory - contains code and data of an executable file. used to store the code and data that is used by the process. often related to ==DLL files== loaded into a process&rsquo;s address space. Process Environment Block (PEB) Contains information about a process, such as its
+" />
+<meta property="og:url" content="https://blog.ydderf.dev/posts/windows-process/" />
+<meta property="og:site_name" content="ydderf&#39;s blog" />
+
+  <meta property="og:image" content="https://blog.ydderf.dev/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ydderf&#39;s blog
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/yydderf">Projects</a></li>
+        
+      
+        
+          <li><a href="/tags">Tags</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/yydderf" >Projects</a></li>
+        
+      
+        
+          <li><a href="/tags" >Tags</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://blog.ydderf.dev/posts/windows-process/"></a>
+  </h1>
+  <div class="post-meta"><span class="post-reading-time">4 min read (646 words)</span></div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>Tag### Description</p>
+<p>Contains information about the resources used by a process on windows, and the characteristics a process can have.</p>
+<h3 id="memory-types">Memory Types<a href="#memory-types" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>A process can have 3 different types of memory</p>
+<ul>
+<li><code>Private memory</code> - dedicated to a single process, not shared by other processes.</li>
+<li><code>Mapped memory</code> - can be shared between multiple processes, examples: shared libraries, shared memory segments, and shared files.</li>
+<li><code>Image memory</code> - contains code and data of an executable file. used to store the code and data that is used by the process. often related to ==DLL files== loaded into a process&rsquo;s address space.</li>
+</ul>
+<h3 id="process-environment-block-peb">Process Environment Block (PEB)<a href="#process-environment-block-peb" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Contains information about a process, such as its</p>
+<ul>
+<li>Parameters</li>
+<li>Startup information</li>
+<li>Allocated heap</li>
+<li>Loaded DLLs</li>
+<li>Process ID</li>
+<li>Path to the executable</li>
+</ul>
+<p>Used by the operating system to store information about the process, and by the Windows loader to launch applications.</p>
+<h5 id="peb-structure">PEB Structure<a href="#peb-structure" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>Important members are:</p>
+<ul>
+<li>[[#BeingDebugged]]</li>
+<li>[[#Ldr]]</li>
+<li>[[#ProcessParameters]]</li>
+<li>[[#AtlThunkSListPtr &amp; AtlThunkSListPtr32]]</li>
+<li>[[#PostProcessInitRoutine]]</li>
+<li>[[#SessionId]]</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _PEB {
+</span></span><span style="display:flex;"><span>  BYTE                          Reserved1[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>  BYTE                          BeingDebugged;
+</span></span><span style="display:flex;"><span>  BYTE                          Reserved2[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>  PVOID                         Reserved3[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>  PPEB_LDR_DATA                 Ldr;
+</span></span><span style="display:flex;"><span>  PRTL_USER_PROCESS_PARAMETERS  ProcessParameters;
+</span></span><span style="display:flex;"><span>  PVOID                         Reserved4[<span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>  PVOID                         AtlThunkSListPtr;
+</span></span><span style="display:flex;"><span>  PVOID                         Reserved5;
+</span></span><span style="display:flex;"><span>  ULONG                         Reserved6;
+</span></span><span style="display:flex;"><span>  PVOID                         Reserved7;
+</span></span><span style="display:flex;"><span>  ULONG                         Reserved8;
+</span></span><span style="display:flex;"><span>  ULONG                         AtlThunkSListPtr32;
+</span></span><span style="display:flex;"><span>  PVOID                         Reserved9[<span style="color:#ae81ff">45</span>];
+</span></span><span style="display:flex;"><span>  BYTE                          Reserved10[<span style="color:#ae81ff">96</span>];
+</span></span><span style="display:flex;"><span>  PPS_POST_PROCESS_INIT_ROUTINE PostProcessInitRoutine;
+</span></span><span style="display:flex;"><span>  BYTE                          Reserved11[<span style="color:#ae81ff">128</span>];
+</span></span><span style="display:flex;"><span>  PVOID                         Reserved12[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>  ULONG                         SessionId;
+</span></span><span style="display:flex;"><span>} PEB, <span style="color:#f92672">*</span>PPEB;
+</span></span></code></pre></div><h5 id="beingdebugged">BeingDebugged<a href="#beingdebugged" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>Set to 1 if the process is being debugged.</p>
+<p>Used by the Windows loader to determine whether to launch the application with a debugger attached or not.</p>
+<h5 id="ldr">Ldr<a href="#ldr" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>A pointer to a <code>PEB_LDR_DATA</code> structure in the <code>PEB</code>
+The structure contains information about the process&rsquo;s loaded dynamic link library modules.</p>
+<p>It includes a list of DLLs loaded in the process, which is used by the Windows loader to keep track of DLLs loaded in the process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _PEB_LDR_DATA {
+</span></span><span style="display:flex;"><span>  BYTE       Reserved1[<span style="color:#ae81ff">8</span>];
+</span></span><span style="display:flex;"><span>  PVOID      Reserved2[<span style="color:#ae81ff">3</span>];
+</span></span><span style="display:flex;"><span>  LIST_ENTRY InMemoryOrderModuleList;
+</span></span><span style="display:flex;"><span>} PEB_LDR_DATA, <span style="color:#f92672">*</span>PPEB_LDR_DATA;
+</span></span></code></pre></div><pre tabindex="0"><code class="language-ad-tip" data-lang="ad-tip">`Ldr` can be leveraged to find the base address of a particular DLL, which can be used to build a ==custom version of GetModuleHandleA/W== to stay stealthy
+</code></pre><h5 id="processparameters">ProcessParameters<a href="#processparameters" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>A pointer to the <code>PTL_USER_PROCESS_PARAMETERS</code> structure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _RTL_USER_PROCESS_PARAMETERS {
+</span></span><span style="display:flex;"><span>  BYTE           Reserved1[<span style="color:#ae81ff">16</span>];
+</span></span><span style="display:flex;"><span>  PVOID          Reserved2[<span style="color:#ae81ff">10</span>];
+</span></span><span style="display:flex;"><span>  UNICODE_STRING ImagePathName;
+</span></span><span style="display:flex;"><span>  UNICODE_STRING CommandLine;
+</span></span><span style="display:flex;"><span>} RTL_USER_PROCESS_PARAMETERS, <span style="color:#f92672">*</span>PRTL_USER_PROCESS_PARAMETERS;
+</span></span></code></pre></div><p>Contains command lines parameters passed to the process when created.</p>
+<p>The parameters are added to the PEB by the Windows loader.</p>
+<pre tabindex="0"><code class="language-ad-tip" data-lang="ad-tip">`ProcessParameters` can be leveraged to perform ==command line spoofing==
+</code></pre><h5 id="atlthunkslistptr--atlthunkslistptr32">AtlThunkSListPtr &amp; AtlThunkSListPtr32<a href="#atlthunkslistptr--atlthunkslistptr32" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>Used by the ATL (Active Template Library) to store a pointer to a linked list of thunking functions.</p>
+<p>Thunking functions are used to call functions that are implemented in a different address space, often represent functions exported from a DLL</p>
+<h5 id="postprocessinitroutine">PostProcessInitRoutine<a href="#postprocessinitroutine" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>Used to store a pointer to a function called by the operating system after TLS (Thread Local Storage) initialization has been completed for all threads in the process.</p>
+<p>This function can also be used to perform additional initialization tasks required by the process.</p>
+<h5 id="sessionid">SessionId<a href="#sessionid" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>A identifier of a single session used for tracking the activity of the user during the session.</p>
+<h3 id="teb-structure">TEB Structure<a href="#teb-structure" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>The import members in TEB</p>
+<ul>
+<li>[[#Process Environment Block (PEB)]]</li>
+<li>[[#TlsSlots]]</li>
+<li>[[#TlsExpansionSlots]]</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _TEB {
+</span></span><span style="display:flex;"><span>  PVOID Reserved1[<span style="color:#ae81ff">12</span>];
+</span></span><span style="display:flex;"><span>  PPEB  ProcessEnvironmentBlock;
+</span></span><span style="display:flex;"><span>  PVOID Reserved2[<span style="color:#ae81ff">399</span>];
+</span></span><span style="display:flex;"><span>  BYTE  Reserved3[<span style="color:#ae81ff">1952</span>];
+</span></span><span style="display:flex;"><span>  PVOID TlsSlots[<span style="color:#ae81ff">64</span>];
+</span></span><span style="display:flex;"><span>  BYTE  Reserved4[<span style="color:#ae81ff">8</span>];
+</span></span><span style="display:flex;"><span>  PVOID Reserved5[<span style="color:#ae81ff">26</span>];
+</span></span><span style="display:flex;"><span>  PVOID ReservedForOle;
+</span></span><span style="display:flex;"><span>  PVOID Reserved6[<span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span>  PVOID TlsExpansionSlots;
+</span></span><span style="display:flex;"><span>} TEB, <span style="color:#f92672">*</span>PTEB;
+</span></span></code></pre></div><h5 id="processenvironmentblock">ProcessEnvironmentBlock<a href="#processenvironmentblock" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>PEB as described above, stores information about the currently running process.</p>
+<pre tabindex="0"><code class="language-ad-note" data-lang="ad-note">Processes stands at a higher level in the hierarchy than threads.  
+</code></pre><h5 id="tlsslots">TlsSlots<a href="#tlsslots" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>Thread local storage is used to store thread-specific data. Each thread has its own TEB with a set of TLS slots.</p>
+<p>Thread-specific variables, thread-specific handles, and thread-specific states may be stored in the TLS slot.</p>
+<h5 id="tlsexpansionslots">TlsExpansionSlots<a href="#tlsexpansionslots" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>The expansion slots are a set of pointers used to store thread-local storage data for a thread. often reserved for use by system DLLs.</p>
+<h3 id="process--thread-handles">Process / Thread Handles<a href="#process--thread-handles" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Each process / thread has its own unique identifier. One can use these identifiers to get the handle of a process or a thread by <code>OpenProcess</code> or <code>OpenThread</code></p>
+<pre tabindex="0"><code class="language-ad-note" data-lang="ad-note">To avoid handle-leaking, every opened handle should be closed by `CloseHandle` once their use is no longer required.
+</code></pre>
+      </div></div>
+
+  
+    
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    
+      <a href="https://blog.ydderf.dev/posts/windows-dll/" class="button inline prev">
+        Windows DLL
+      </a>
+    
+    
+    
+  </div>
+</div>
+
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
