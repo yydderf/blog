@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on ydderf&#39;s blog</title>
+    <link>//localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on ydderf&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 06 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arch Linux Installation</title>
+      <link>//localhost:1313/posts/arch-linux-installation/</link>
+      <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/posts/arch-linux-installation/</guid>
+      <description>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
+&lt;h5 id=&#34;install-objects&#34;&gt;install objects&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;base&lt;/li&gt;
+&lt;li&gt;linux&lt;/li&gt;
+&lt;li&gt;linux-firmware&lt;/li&gt;
+&lt;li&gt;vim (for editing files)&lt;/li&gt;
+&lt;li&gt;man-db (for man pages)&lt;/li&gt;
+&lt;li&gt;man-pages&lt;/li&gt;
+&lt;li&gt;dhcpcd&lt;/li&gt;
+&lt;li&gt;amd-ucode / intel-ucode ([[microcode]])&lt;/li&gt;
+&lt;li&gt;lvm2 (for lvm partitions)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;optional&#34;&gt;optional&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;base-devel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;if &lt;code&gt;dhcpcd&lt;/code&gt; is not installed, and arch is installed in an emulated environment
+the newly installed operating system would not have network access
+to get the network access back, the iso file that installed the operating system is needed&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;use &lt;code&gt;fdisk -l&lt;/code&gt; to identify the &lt;code&gt;root partition&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;mount /dev/sda3 /mnt&lt;/code&gt; to mount the &lt;code&gt;root partition&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(assuming the root partition is in &lt;code&gt;/dev/sda3&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use mount &lt;code&gt;/dev/sda1 /mnt/boot&lt;/code&gt; to mount the &lt;code&gt;boot partition&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(assuming the boot partition is int `/dev/sda1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;swap on any swap partition if any exist using &lt;code&gt;swapon /dev/sda2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;arch-chroot /mnt&lt;/code&gt; into the system&lt;/li&gt;
+&lt;li&gt;install the missing services using &lt;code&gt;pacman -S &amp;lt;target&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;</description>
+      <content>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
+&lt;h5 id=&#34;install-objects&#34;&gt;install objects&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;base&lt;/li&gt;
+&lt;li&gt;linux&lt;/li&gt;
+&lt;li&gt;linux-firmware&lt;/li&gt;
+&lt;li&gt;vim (for editing files)&lt;/li&gt;
+&lt;li&gt;man-db (for man pages)&lt;/li&gt;
+&lt;li&gt;man-pages&lt;/li&gt;
+&lt;li&gt;dhcpcd&lt;/li&gt;
+&lt;li&gt;amd-ucode / intel-ucode ([[microcode]])&lt;/li&gt;
+&lt;li&gt;lvm2 (for lvm partitions)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;optional&#34;&gt;optional&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;base-devel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;if &lt;code&gt;dhcpcd&lt;/code&gt; is not installed, and arch is installed in an emulated environment
+the newly installed operating system would not have network access
+to get the network access back, the iso file that installed the operating system is needed&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;use &lt;code&gt;fdisk -l&lt;/code&gt; to identify the &lt;code&gt;root partition&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;mount /dev/sda3 /mnt&lt;/code&gt; to mount the &lt;code&gt;root partition&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(assuming the root partition is in &lt;code&gt;/dev/sda3&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use mount &lt;code&gt;/dev/sda1 /mnt/boot&lt;/code&gt; to mount the &lt;code&gt;boot partition&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(assuming the boot partition is int `/dev/sda1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;swap on any swap partition if any exist using &lt;code&gt;swapon /dev/sda2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;arch-chroot /mnt&lt;/code&gt; into the system&lt;/li&gt;
+&lt;li&gt;install the missing services using &lt;code&gt;pacman -S &amp;lt;target&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>
