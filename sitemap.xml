@@ -2,36 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/posts/arch-linux-installation/</loc>
+    <loc>https://blog.ydderf.dev/posts/arch-linux-installation/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/kernel/</loc>
+    <loc>https://blog.ydderf.dev/tags/kernel/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/linux/</loc>
+    <loc>https://blog.ydderf.dev/tags/linux/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/malware/</loc>
+    <loc>https://blog.ydderf.dev/tags/malware/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/</loc>
+    <loc>https://blog.ydderf.dev/posts/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>https://blog.ydderf.dev/tags/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/windows/</loc>
+    <loc>https://blog.ydderf.dev/tags/windows/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/windows-dll/</loc>
+    <loc>https://blog.ydderf.dev/posts/windows-dll/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/windowsapi/</loc>
+    <loc>https://blog.ydderf.dev/tags/windowsapi/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/</loc>
+    <loc>https://blog.ydderf.dev/</loc>
     <lastmod>2025-01-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>https://blog.ydderf.dev/categories/</loc>
   </url>
 </urlset>
