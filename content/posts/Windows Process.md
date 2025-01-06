@@ -4,13 +4,9 @@ date: 2025-01-06
 tags:
   - Windows
   - OperatingSystem
+Description: Contains information about the resources used by a process on windows, and the characteristics a process can have.
 ---
 # Windows Process
-
-
-### Description
-
-Contains information about the resources used by a process on windows, and the characteristics a process can have.
 
 ### Memory Types
 

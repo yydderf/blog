@@ -209,46 +209,7 @@
 
         <div class="post-content">
           
-            <h1 id="arch-linux-installation">Arch Linux Installation</h1>
-<h5 id="install-objects">install objects</h5>
-<ul>
-<li>base</li>
-<li>linux</li>
-<li>linux-firmware</li>
-<li>vim (for editing files)</li>
-<li>man-db (for man pages)</li>
-<li>man-pages</li>
-<li>dhcpcd</li>
-<li>amd-ucode / intel-ucode ([[microcode]])</li>
-<li>lvm2 (for lvm partitions)</li>
-</ul>
-<h5 id="optional">optional</h5>
-<ul>
-<li>git</li>
-<li>base-devel</li>
-</ul>
-<blockquote>
-<p>if <code>dhcpcd</code> is not installed, and arch is installed in an emulated environment
-the newly installed operating system would not have network access
-to get the network access back, the iso file that installed the operating system is needed</p>
-</blockquote>
-<ul>
-<li>use <code>fdisk -l</code> to identify the <code>root partition</code></li>
-<li>use <code>mount /dev/sda3 /mnt</code> to mount the <code>root partition</code>
-<ul>
-<li>(assuming the root partition is in <code>/dev/sda3</code>)</li>
-</ul>
-</li>
-<li>use mount <code>/dev/sda1 /mnt/boot</code> to mount the <code>boot partition</code>
-<ul>
-<li>(assuming the boot partition is int `/dev/sda1)</li>
-</ul>
-</li>
-<li>swap on any swap partition if any exist using <code>swapon /dev/sda2</code></li>
-<li>use <code>arch-chroot /mnt</code> into the system</li>
-<li>install the missing services using <code>pacman -S &lt;target&gt;</code></li>
-</ul>
-<h3 id="references">References</h3>
+            <p>Some targets that should be installed when installing arch linux on the host</p>
           
         </div>
 
@@ -283,13 +244,7 @@ to get the network access back, the iso file that installed the operating system
 
         <div class="post-content">
           
-            <h1 id="windows-dll">Windows DLL</h1>
-<p>DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.</p>
-<h3 id="system-wide-dll-base-address">System-wide DLL Base Address</h3>
-<p>For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.</p>
-<p><img src="/images/systemwidedll.png" alt="Image Description"></p>
-<h3 id="dll-entry-point">DLL Entry Point</h3>
-<p>Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.</p>
+            <p>An introduction about Windows DLLs, including how to export the function or run the DLLs directly</p>
           
         </div>
 
@@ -322,18 +277,7 @@ to get the network access back, the iso file that installed the operating system
 
         <div class="post-content">
           
-            <h1 id="windows-process">Windows Process</h1>
-<h3 id="description">Description</h3>
-<p>Contains information about the resources used by a process on windows, and the characteristics a process can have.</p>
-<h3 id="memory-types">Memory Types</h3>
-<p>A process can have 3 different types of memory</p>
-<ul>
-<li><code>Private memory</code> - dedicated to a single process, not shared by other processes.</li>
-<li><code>Mapped memory</code> - can be shared between multiple processes, examples: shared libraries, shared memory segments, and shared files.</li>
-<li><code>Image memory</code> - contains code and data of an executable file. used to store the code and data that is used by the process. often related to ==DLL files== loaded into a process&rsquo;s address space.</li>
-</ul>
-<h3 id="process-environment-block-peb">Process Environment Block (PEB)</h3>
-<p>Contains information about a process, such as its</p>
+            <p>Contains information about the resources used by a process on windows, and the characteristics a process can have.</p>
           
         </div>
 

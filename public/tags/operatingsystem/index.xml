@@ -14,8 +14,6 @@
       
       <guid>https://blog.ydderf.dev/posts/windows-process/</guid>
       <description>&lt;h1 id=&#34;windows-process&#34;&gt;Windows Process&lt;/h1&gt;
-&lt;h3 id=&#34;description&#34;&gt;Description&lt;/h3&gt;
-&lt;p&gt;Contains information about the resources used by a process on windows, and the characteristics a process can have.&lt;/p&gt;
 &lt;h3 id=&#34;memory-types&#34;&gt;Memory Types&lt;/h3&gt;
 &lt;p&gt;A process can have 3 different types of memory&lt;/p&gt;
 &lt;ul&gt;
@@ -26,8 +24,6 @@
 &lt;h3 id=&#34;process-environment-block-peb&#34;&gt;Process Environment Block (PEB)&lt;/h3&gt;
 &lt;p&gt;Contains information about a process, such as its&lt;/p&gt;</description>
       <content>&lt;h1 id=&#34;windows-process&#34;&gt;Windows Process&lt;/h1&gt;
-&lt;h3 id=&#34;description&#34;&gt;Description&lt;/h3&gt;
-&lt;p&gt;Contains information about the resources used by a process on windows, and the characteristics a process can have.&lt;/p&gt;
 &lt;h3 id=&#34;memory-types&#34;&gt;Memory Types&lt;/h3&gt;
 &lt;p&gt;A process can have 3 different types of memory&lt;/p&gt;
 &lt;ul&gt;

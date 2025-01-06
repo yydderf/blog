@@ -6,8 +6,7 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Arch Linux Installation install objects base linux linux-firmware vim (for editing files) man-db (for man pages) man-pages dhcpcd amd-ucode / intel-ucode ([[microcode]]) lvm2 (for lvm partitions) optional git base-devel if dhcpcd is not installed, and arch is installed in an emulated environment the newly installed operating system would not have network access to get the network access back, the iso file that installed the operating system is needed
-use fdisk -l to identify the root partition use mount /dev/sda3 /mnt to mount the root partition (assuming the root partition is in /dev/sda3) use mount /dev/sda1 /mnt/boot to mount the boot partition (assuming the boot partition is int `/dev/sda1) swap on any swap partition if any exist using swapon /dev/sda2 use arch-chroot /mnt into the system install the missing services using pacman -S &lt;target&gt; References" />
+<meta name="description" content="Some targets that should be installed when installing arch linux on the host" />
 <meta name="keywords" content="" />
 
   <meta name="robots" content="noodp" />
@@ -82,8 +81,7 @@ use fdisk -l to identify the root partition use mount /dev/sda3 /mnt to mount th
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Arch Linux Installation">
-<meta property="og:description" content="Arch Linux Installation install objects base linux linux-firmware vim (for editing files) man-db (for man pages) man-pages dhcpcd amd-ucode / intel-ucode ([[microcode]]) lvm2 (for lvm partitions) optional git base-devel if dhcpcd is not installed, and arch is installed in an emulated environment the newly installed operating system would not have network access to get the network access back, the iso file that installed the operating system is needed
-use fdisk -l to identify the root partition use mount /dev/sda3 /mnt to mount the root partition (assuming the root partition is in /dev/sda3) use mount /dev/sda1 /mnt/boot to mount the boot partition (assuming the boot partition is int `/dev/sda1) swap on any swap partition if any exist using swapon /dev/sda2 use arch-chroot /mnt into the system install the missing services using pacman -S &lt;target&gt; References" />
+<meta property="og:description" content="Some targets that should be installed when installing arch linux on the host" />
 <meta property="og:url" content="https://blog.ydderf.dev/posts/arch-linux-installation/" />
 <meta property="og:site_name" content="ydderf&#39;s blog" />
 
@@ -198,7 +196,7 @@ use fdisk -l to identify the root partition use mount /dev/sda3 /mnt to mount th
 
   <div class="post-content"><div>
         <h1 id="arch-linux-installation">Arch Linux Installation<a href="#arch-linux-installation" class="hanchor" ariaLabel="Anchor">#</a> </h1>
-<h5 id="install-objects">install objects<a href="#install-objects" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<h5 id="install-targets">install targets<a href="#install-targets" class="hanchor" ariaLabel="Anchor">#</a> </h5>
 <ul>
 <li>base</li>
 <li>linux</li>
