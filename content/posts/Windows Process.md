@@ -1,4 +1,14 @@
-Tag### Description
+---
+title: Windows Process
+date: 2025-01-06
+tags:
+  - Windows
+  - OperatingSystem
+---
+# Windows Process
+
+
+### Description
 
 Contains information about the resources used by a process on windows, and the characteristics a process can have.
 
@@ -164,3 +174,5 @@ Each process / thread has its own unique identifier. One can use these identifie
 ```ad-note
 To avoid handle-leaking, every opened handle should be closed by `CloseHandle` once their use is no longer required.
 ```
+
+### References

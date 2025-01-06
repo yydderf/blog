@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OperatingSystem on ydderf&#39;s blog</title>
+    <link>https://blog.ydderf.dev/tags/operatingsystem/</link>
+    <description>Recent content in OperatingSystem on ydderf&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 06 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ydderf.dev/tags/operatingsystem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows Process</title>
+      <link>https://blog.ydderf.dev/posts/windows-process/</link>
+      <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ydderf.dev/posts/windows-process/</guid>
+      <description>&lt;h1 id=&#34;windows-process&#34;&gt;Windows Process&lt;/h1&gt;
+&lt;h3 id=&#34;description&#34;&gt;Description&lt;/h3&gt;
+&lt;p&gt;Contains information about the resources used by a process on windows, and the characteristics a process can have.&lt;/p&gt;
+&lt;h3 id=&#34;memory-types&#34;&gt;Memory Types&lt;/h3&gt;
+&lt;p&gt;A process can have 3 different types of memory&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Private memory&lt;/code&gt; - dedicated to a single process, not shared by other processes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Mapped memory&lt;/code&gt; - can be shared between multiple processes, examples: shared libraries, shared memory segments, and shared files.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Image memory&lt;/code&gt; - contains code and data of an executable file. used to store the code and data that is used by the process. often related to ==DLL files== loaded into a process&amp;rsquo;s address space.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;process-environment-block-peb&#34;&gt;Process Environment Block (PEB)&lt;/h3&gt;
+&lt;p&gt;Contains information about a process, such as its&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;windows-process&#34;&gt;Windows Process&lt;/h1&gt;
+&lt;h3 id=&#34;description&#34;&gt;Description&lt;/h3&gt;
+&lt;p&gt;Contains information about the resources used by a process on windows, and the characteristics a process can have.&lt;/p&gt;
+&lt;h3 id=&#34;memory-types&#34;&gt;Memory Types&lt;/h3&gt;
+&lt;p&gt;A process can have 3 different types of memory&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Private memory&lt;/code&gt; - dedicated to a single process, not shared by other processes.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Mapped memory&lt;/code&gt; - can be shared between multiple processes, examples: shared libraries, shared memory segments, and shared files.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Image memory&lt;/code&gt; - contains code and data of an executable file. used to store the code and data that is used by the process. often related to ==DLL files== loaded into a process&amp;rsquo;s address space.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;process-environment-block-peb&#34;&gt;Process Environment Block (PEB)&lt;/h3&gt;
+&lt;p&gt;Contains information about a process, such as its&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Parameters&lt;/li&gt;
+&lt;li&gt;Startup information&lt;/li&gt;
+&lt;li&gt;Allocated heap&lt;/li&gt;
+&lt;li&gt;Loaded DLLs&lt;/li&gt;
+&lt;li&gt;Process ID&lt;/li&gt;
+&lt;li&gt;Path to the executable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Used by the operating system to store information about the process, and by the Windows loader to launch applications.&lt;/p&gt;
+&lt;h5 id=&#34;peb-structure&#34;&gt;PEB Structure&lt;/h5&gt;
+&lt;p&gt;Important members are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[[#BeingDebugged]]&lt;/li&gt;
+&lt;li&gt;[[#Ldr]]&lt;/li&gt;
+&lt;li&gt;[[#ProcessParameters]]&lt;/li&gt;
+&lt;li&gt;[[#AtlThunkSListPtr &amp;amp; AtlThunkSListPtr32]]&lt;/li&gt;
+&lt;li&gt;[[#PostProcessInitRoutine]]&lt;/li&gt;
+&lt;li&gt;[[#SessionId]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _PEB {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE                          Reserved1[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE                          BeingDebugged;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE                          Reserved2[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID                         Reserved3[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PPEB_LDR_DATA                 Ldr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PRTL_USER_PROCESS_PARAMETERS  ProcessParameters;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID                         Reserved4[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID                         AtlThunkSListPtr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID                         Reserved5;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ULONG                         Reserved6;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID                         Reserved7;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ULONG                         Reserved8;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ULONG                         AtlThunkSListPtr32;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID                         Reserved9[&lt;span style=&#34;color:#ae81ff&#34;&gt;45&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE                          Reserved10[&lt;span style=&#34;color:#ae81ff&#34;&gt;96&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PPS_POST_PROCESS_INIT_ROUTINE PostProcessInitRoutine;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE                          Reserved11[&lt;span style=&#34;color:#ae81ff&#34;&gt;128&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID                         Reserved12[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ULONG                         SessionId;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} PEB, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PPEB;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;beingdebugged&#34;&gt;BeingDebugged&lt;/h5&gt;
+&lt;p&gt;Set to 1 if the process is being debugged.&lt;/p&gt;
+&lt;p&gt;Used by the Windows loader to determine whether to launch the application with a debugger attached or not.&lt;/p&gt;
+&lt;h5 id=&#34;ldr&#34;&gt;Ldr&lt;/h5&gt;
+&lt;p&gt;A pointer to a &lt;code&gt;PEB_LDR_DATA&lt;/code&gt; structure in the &lt;code&gt;PEB&lt;/code&gt;
+The structure contains information about the process&amp;rsquo;s loaded dynamic link library modules.&lt;/p&gt;
+&lt;p&gt;It includes a list of DLLs loaded in the process, which is used by the Windows loader to keep track of DLLs loaded in the process.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _PEB_LDR_DATA {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE       Reserved1[&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID      Reserved2[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  LIST_ENTRY InMemoryOrderModuleList;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} PEB_LDR_DATA, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PPEB_LDR_DATA;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ad-tip&#34; data-lang=&#34;ad-tip&#34;&gt;`Ldr` can be leveraged to find the base address of a particular DLL, which can be used to build a ==custom version of GetModuleHandleA/W== to stay stealthy
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;processparameters&#34;&gt;ProcessParameters&lt;/h5&gt;
+&lt;p&gt;A pointer to the &lt;code&gt;PTL_USER_PROCESS_PARAMETERS&lt;/code&gt; structure.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _RTL_USER_PROCESS_PARAMETERS {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE           Reserved1[&lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID          Reserved2[&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  UNICODE_STRING ImagePathName;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  UNICODE_STRING CommandLine;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} RTL_USER_PROCESS_PARAMETERS, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PRTL_USER_PROCESS_PARAMETERS;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Contains command lines parameters passed to the process when created.&lt;/p&gt;
+&lt;p&gt;The parameters are added to the PEB by the Windows loader.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ad-tip&#34; data-lang=&#34;ad-tip&#34;&gt;`ProcessParameters` can be leveraged to perform ==command line spoofing==
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;atlthunkslistptr--atlthunkslistptr32&#34;&gt;AtlThunkSListPtr &amp;amp; AtlThunkSListPtr32&lt;/h5&gt;
+&lt;p&gt;Used by the ATL (Active Template Library) to store a pointer to a linked list of thunking functions.&lt;/p&gt;
+&lt;p&gt;Thunking functions are used to call functions that are implemented in a different address space, often represent functions exported from a DLL&lt;/p&gt;
+&lt;h5 id=&#34;postprocessinitroutine&#34;&gt;PostProcessInitRoutine&lt;/h5&gt;
+&lt;p&gt;Used to store a pointer to a function called by the operating system after TLS (Thread Local Storage) initialization has been completed for all threads in the process.&lt;/p&gt;
+&lt;p&gt;This function can also be used to perform additional initialization tasks required by the process.&lt;/p&gt;
+&lt;h5 id=&#34;sessionid&#34;&gt;SessionId&lt;/h5&gt;
+&lt;p&gt;A identifier of a single session used for tracking the activity of the user during the session.&lt;/p&gt;
+&lt;h3 id=&#34;teb-structure&#34;&gt;TEB Structure&lt;/h3&gt;
+&lt;p&gt;The import members in TEB&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[[#Process Environment Block (PEB)]]&lt;/li&gt;
+&lt;li&gt;[[#TlsSlots]]&lt;/li&gt;
+&lt;li&gt;[[#TlsExpansionSlots]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _TEB {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID Reserved1[&lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PPEB  ProcessEnvironmentBlock;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID Reserved2[&lt;span style=&#34;color:#ae81ff&#34;&gt;399&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE  Reserved3[&lt;span style=&#34;color:#ae81ff&#34;&gt;1952&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID TlsSlots[&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE  Reserved4[&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID Reserved5[&lt;span style=&#34;color:#ae81ff&#34;&gt;26&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID ReservedForOle;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID Reserved6[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  PVOID TlsExpansionSlots;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} TEB, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PTEB;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;processenvironmentblock&#34;&gt;ProcessEnvironmentBlock&lt;/h5&gt;
+&lt;p&gt;PEB as described above, stores information about the currently running process.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ad-note&#34; data-lang=&#34;ad-note&#34;&gt;Processes stands at a higher level in the hierarchy than threads.  
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;tlsslots&#34;&gt;TlsSlots&lt;/h5&gt;
+&lt;p&gt;Thread local storage is used to store thread-specific data. Each thread has its own TEB with a set of TLS slots.&lt;/p&gt;
+&lt;p&gt;Thread-specific variables, thread-specific handles, and thread-specific states may be stored in the TLS slot.&lt;/p&gt;
+&lt;h5 id=&#34;tlsexpansionslots&#34;&gt;TlsExpansionSlots&lt;/h5&gt;
+&lt;p&gt;The expansion slots are a set of pointers used to store thread-local storage data for a thread. often reserved for use by system DLLs.&lt;/p&gt;
+&lt;h3 id=&#34;process--thread-handles&#34;&gt;Process / Thread Handles&lt;/h3&gt;
+&lt;p&gt;Each process / thread has its own unique identifier. One can use these identifiers to get the handle of a process or a thread by &lt;code&gt;OpenProcess&lt;/code&gt; or &lt;code&gt;OpenThread&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ad-note&#34; data-lang=&#34;ad-note&#34;&gt;To avoid handle-leaking, every opened handle should be closed by `CloseHandle` once their use is no longer required.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>
