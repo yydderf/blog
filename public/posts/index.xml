@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on ydderf&#39;s blog</title>
+    <link>//localhost:1313/posts/</link>
+    <description>Recent content in Posts on ydderf&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 06 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arch Linux Installation</title>
+      <link>//localhost:1313/posts/arch-linux-installation/</link>
+      <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/posts/arch-linux-installation/</guid>
+      <description>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
+&lt;h5 id=&#34;install-objects&#34;&gt;install objects&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;base&lt;/li&gt;
+&lt;li&gt;linux&lt;/li&gt;
+&lt;li&gt;linux-firmware&lt;/li&gt;
+&lt;li&gt;vim (for editing files)&lt;/li&gt;
+&lt;li&gt;man-db (for man pages)&lt;/li&gt;
+&lt;li&gt;man-pages&lt;/li&gt;
+&lt;li&gt;dhcpcd&lt;/li&gt;
+&lt;li&gt;amd-ucode / intel-ucode ([[microcode]])&lt;/li&gt;
+&lt;li&gt;lvm2 (for lvm partitions)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;optional&#34;&gt;optional&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;base-devel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;if &lt;code&gt;dhcpcd&lt;/code&gt; is not installed, and arch is installed in an emulated environment
+the newly installed operating system would not have network access
+to get the network access back, the iso file that installed the operating system is needed&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;use &lt;code&gt;fdisk -l&lt;/code&gt; to identify the &lt;code&gt;root partition&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;mount /dev/sda3 /mnt&lt;/code&gt; to mount the &lt;code&gt;root partition&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(assuming the root partition is in &lt;code&gt;/dev/sda3&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use mount &lt;code&gt;/dev/sda1 /mnt/boot&lt;/code&gt; to mount the &lt;code&gt;boot partition&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(assuming the boot partition is int `/dev/sda1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;swap on any swap partition if any exist using &lt;code&gt;swapon /dev/sda2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;arch-chroot /mnt&lt;/code&gt; into the system&lt;/li&gt;
+&lt;li&gt;install the missing services using &lt;code&gt;pacman -S &amp;lt;target&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;</description>
+      <content>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
+&lt;h5 id=&#34;install-objects&#34;&gt;install objects&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;base&lt;/li&gt;
+&lt;li&gt;linux&lt;/li&gt;
+&lt;li&gt;linux-firmware&lt;/li&gt;
+&lt;li&gt;vim (for editing files)&lt;/li&gt;
+&lt;li&gt;man-db (for man pages)&lt;/li&gt;
+&lt;li&gt;man-pages&lt;/li&gt;
+&lt;li&gt;dhcpcd&lt;/li&gt;
+&lt;li&gt;amd-ucode / intel-ucode ([[microcode]])&lt;/li&gt;
+&lt;li&gt;lvm2 (for lvm partitions)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;optional&#34;&gt;optional&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;base-devel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;if &lt;code&gt;dhcpcd&lt;/code&gt; is not installed, and arch is installed in an emulated environment
+the newly installed operating system would not have network access
+to get the network access back, the iso file that installed the operating system is needed&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;use &lt;code&gt;fdisk -l&lt;/code&gt; to identify the &lt;code&gt;root partition&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;mount /dev/sda3 /mnt&lt;/code&gt; to mount the &lt;code&gt;root partition&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(assuming the root partition is in &lt;code&gt;/dev/sda3&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use mount &lt;code&gt;/dev/sda1 /mnt/boot&lt;/code&gt; to mount the &lt;code&gt;boot partition&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(assuming the boot partition is int `/dev/sda1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;swap on any swap partition if any exist using &lt;code&gt;swapon /dev/sda2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;arch-chroot /mnt&lt;/code&gt; into the system&lt;/li&gt;
+&lt;li&gt;install the missing services using &lt;code&gt;pacman -S &amp;lt;target&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Windows DLL</title>
+      <link>//localhost:1313/posts/windows-dll/</link>
+      <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/posts/windows-dll/</guid>
+      <description>&lt;h1 id=&#34;windows-dll&#34;&gt;Windows DLL&lt;/h1&gt;
+&lt;p&gt;DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.&lt;/p&gt;
+&lt;h3 id=&#34;system-wide-dll-base-address&#34;&gt;System-wide DLL Base Address&lt;/h3&gt;
+&lt;p&gt;For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;dll-entry-point&#34;&gt;DLL Entry Point&lt;/h3&gt;
+&lt;p&gt;Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;windows-dll&#34;&gt;Windows DLL&lt;/h1&gt;
+&lt;p&gt;DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.&lt;/p&gt;
+&lt;h3 id=&#34;system-wide-dll-base-address&#34;&gt;System-wide DLL Base Address&lt;/h3&gt;
+&lt;p&gt;For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;dll-entry-point&#34;&gt;DLL Entry Point&lt;/h3&gt;
+&lt;p&gt;Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.&lt;/p&gt;
+&lt;p&gt;There are 4 possibilities for the entry point being called:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;DLL_PROCESS_ATTACH&lt;/code&gt; - a process is loading the DLL&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DLL_THREAD_ATTACH&lt;/code&gt; - a process is creating a new thread&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DLL_THREAD_DETACH&lt;/code&gt; - a thread exits normally&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DLL_PROCESS_DETACH&lt;/code&gt; - a process unloads the DLL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;exporting-a-function&#34;&gt;Exporting a Function&lt;/h3&gt;
+&lt;p&gt;To export a function in a DLL, it must be declared by keywords &lt;code&gt;extern&lt;/code&gt; and &lt;code&gt;__declspec(dllexport)&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;Windows.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;extern&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;__declspec&lt;/span&gt;(dllexport) &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Hello&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;MessageBoxA&lt;/span&gt;(NULL, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;message&amp;#34;&lt;/span&gt;, MB_ICONINFORMATION);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;the function &lt;code&gt;Hello()&lt;/code&gt; can be called after the dll is loaded into memory&lt;/p&gt;
+&lt;h3 id=&#34;dynamic-linking&#34;&gt;Dynamic Linking&lt;/h3&gt;
+&lt;p&gt;Functions can be imported using &lt;code&gt;LoadLibrary&lt;/code&gt;, &lt;code&gt;GetModuleHandle&lt;/code&gt;, and &lt;code&gt;GetProcAddress&lt;/code&gt;.&lt;/p&gt;
+&lt;h5 id=&#34;step-1---loading-a-dll&#34;&gt;Step 1 - Loading a DLL&lt;/h5&gt;
+&lt;p&gt;The calling of Windows functions will make the process load the required DLLs in the beginning.&lt;/p&gt;
+&lt;p&gt;Custom DLLs must be loaded manually with the functions mentioned before.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;windows.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	HMODULE hModule &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;LoadLibraryA&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Dll1.dll&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;step-2---retrieving-a-dlls-handle&#34;&gt;Step 2 - Retrieving a DLL&amp;rsquo;s Handle&lt;/h5&gt;
+&lt;p&gt;If the target DLL had been loaded into the memory, the handle can be retrieved via &lt;code&gt;GetModuleHandleA&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;Windows.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	HMODULE hModule &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GetModuleHandleA&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Dll1.dll&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// if the dll has not been loaded
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (hModule &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; NULL) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		hModule &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;LoadLibraryA&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Dll1.dll&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;step-3---retrieving-a-functions-address&#34;&gt;Step 3 - Retrieving a Function&amp;rsquo;s Address&lt;/h5&gt;
+&lt;p&gt;After the DLL is loaded and the handle is retrieved, the target function&amp;rsquo;s address must be located.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;Windows.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	HMODULE hModule &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GetModuleHandleA&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Dll1.dll&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (hModule &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; NULL) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		hModule &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;LoadLibraryA&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Dll1.dll&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// pHelloWorld now stores the function&amp;#39;s address
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	PVOID pHelloWorld &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GetProcessAddress&lt;/span&gt;(hModule, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;HelloWorld&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;step-4---type-casting-the-functions-address&#34;&gt;Step 4 - Type-casting The Function&amp;rsquo;s Address&lt;/h5&gt;
+&lt;p&gt;The type-casting to the function pointer is required in order to conveniently invoke the function.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;Windows.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;void&lt;/span&gt; (WINAPI&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; HelloWorldfptr)();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	HMODULE hModule &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GetModuleHandleA&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sampleDLL.dll&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (hModule &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; NULL) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// If the DLL is not loaded in memory, use LoadLibrary to load it
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        hModule &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;LoadLibraryA&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sampleDLL.dll&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    PVOID pHelloWorld &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;GetProcAddress&lt;/span&gt;(hModule, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;HelloWorld&amp;#34;&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;/// pHelloWorld stores HelloWorld&amp;#39;s function address
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    HelloWorldFunctionPointer HelloWorld &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (HelloWorldFunctionPointer)pHelloWorld;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;putting-it-together&#34;&gt;Putting it Together&lt;/h3&gt;
+&lt;p&gt;Another example for calling MessageBoxA.
+The following assumes that &lt;code&gt;user32.dll&lt;/code&gt; is not automatically loaded into the memory&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;int&lt;/span&gt; (WINAPI&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; MessageBoxAFunctionPointer)(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	HWND    hWnd,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	LPCSTR  lpText,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	LPCSTR  lpCaption,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	UINT    uType
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;call&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	MessageBoxAFunctionPointer pMessageBoxA &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (MessageBoxAFunctionPointer)&lt;span style=&#34;color:#a6e22e&#34;&gt;GetProcessAddress&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;LoadLibraryA&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;user32.dll&amp;#34;&lt;/span&gt;), &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MessageBoxA&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (pMessageBoxA &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; NULL) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;pMessageBoxA&lt;/span&gt;(NULL, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;caption&amp;#34;&lt;/span&gt;, MB_OK);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;running-dlls-directly&#34;&gt;Running DLLs Directly&lt;/h3&gt;
+&lt;p&gt;Another way to run the functions in a DLL is by &lt;code&gt;rundll32.exe&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rundll32.exe &amp;lt;dllname&amp;gt;,&amp;lt;target &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The following example locks the machine via the function &lt;code&gt;LockWorkStation&lt;/code&gt; in &lt;code&gt;user32.dll&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rundll32.exe user32.dll,LockWorkStation
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    </item>
+    
+  </channel>
+</rss>
