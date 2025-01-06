@@ -8,6 +8,27 @@
     <language>en</language>
     <lastBuildDate>Mon, 06 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ydderf.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About</title>
+      <link>https://blog.ydderf.dev/about/</link>
+      <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ydderf.dev/about/</guid>
+      <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;
+&lt;p&gt;Hi, I&amp;rsquo;m ydderf (freddy[::-1])&lt;/p&gt;
+&lt;p&gt;currently a college student major in mechanical engineering and computer science&lt;/p&gt;
+&lt;p&gt;love low level stuff&lt;/p&gt;
+&lt;p&gt;learning to code in rust rn&lt;/p&gt;
+&lt;p&gt;gonna post something that I learnt recently&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;
+&lt;p&gt;Hi, I&amp;rsquo;m ydderf (freddy[::-1])&lt;/p&gt;
+&lt;p&gt;currently a college student major in mechanical engineering and computer science&lt;/p&gt;
+&lt;p&gt;love low level stuff&lt;/p&gt;
+&lt;p&gt;learning to code in rust rn&lt;/p&gt;
+&lt;p&gt;gonna post something that I learnt recently&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
       <title>Arch Linux Installation</title>
       <link>https://blog.ydderf.dev/posts/arch-linux-installation/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>

@@ -5,7 +5,7 @@ cd /Users/ydderf/Workspace/projects/ydderfsblog && {
     python3 images.py
     hugo build -b 'https://blog.ydderf.dev/'
     git add --all
-    git commit -m 'feat: add new posts'
+    git commit
     git push
     git subtree split --prefix public -b deploy
     git push origin deploy:deploy --force
