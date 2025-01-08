@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="https://blog.ydderf.dev/css/pagination.min.82f6400eae7c7c6dc3c866733c2ec0579e4089608fea69400ff85b3880aa0d3c.css">
 
   
-  <link rel="stylesheet" href="https://blog.ydderf.dev/css/post.min.844e96a0bb9227b4fe610317dc322b87863d974653aa9220aab89b49c4d50721.css">
+  <link rel="stylesheet" href="https://blog.ydderf.dev/css/post.min.4b2dbb0a5b5b5ecafc444627d539e7dbc44ee1b30b31ca8c4af992b1c7f093c5.css">
 
   
   <link rel="stylesheet" href="https://blog.ydderf.dev/css/prism.min.9023bbc24533d09e97a51a0a42a5a7bfe4c591ae167c5551fb1d2191d11977c0.css">
@@ -201,7 +201,11 @@
 <p>DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.</p>
 <h3 id="system-wide-dll-base-address">System-wide DLL Base Address<a href="#system-wide-dll-base-address" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.</p>
-<p><img src="/images/systemwidedll.png" alt="Image Description"></p>
+<p><img src="/images/systemwidedll.png" 
+     alt="Image Description" 
+      
+     data-zoomable>
+</p>
 <h3 id="dll-entry-point">DLL Entry Point<a href="#dll-entry-point" class="hanchor" ariaLabel="Anchor">#</a> </h3>
 <p>Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.</p>
 <p>There are 4 possibilities for the entry point being called:</p>
@@ -351,6 +355,13 @@ The following assumes that <code>user32.dll</code> is not automatically loaded i
 
   
 </div>
+
+<script src="/js/medium-zoom.min.js"></script>
+<script>
+  mediumZoom('[data-zoomable]', {
+    background: '#080d19',
+  });
+</script>
 
 </body>
 </html>
