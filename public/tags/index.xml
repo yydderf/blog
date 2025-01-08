@@ -6,7 +6,17 @@
     <description>Recent content in Tags on ydderf&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ydderf.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ydderf.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows</title>
+      <link>https://blog.ydderf.dev/tags/windows/</link>
+      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ydderf.dev/tags/windows/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>Kernel</title>
       <link>https://blog.ydderf.dev/tags/kernel/</link>
@@ -43,16 +53,6 @@
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
       <guid>https://blog.ydderf.dev/tags/operatingsystem/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://blog.ydderf.dev/tags/windows/</link>
-      <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.ydderf.dev/tags/windows/</guid>
       <description></description>
       <content></content>
     </item>

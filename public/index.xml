@@ -2,17 +2,205 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ydderf&#39;s blog</title>
-    <link>https://blog.ydderf.dev/</link>
+    <link>//localhost:1313/</link>
     <description>Recent content on ydderf&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ydderf.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Portable Executable Format</title>
+      <link>//localhost:1313/posts/portable-executable-format/</link>
+      <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/posts/portable-executable-format/</guid>
+      <description>&lt;h3 id=&#34;pe-file-extensions&#34;&gt;PE File Extensions&lt;/h3&gt;
+&lt;p&gt;The following is the list of PE file extensions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.exe&lt;/code&gt; - run directly by the user, contains the main entry point.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.dll&lt;/code&gt; - dynamic-link library that can be used by multiple programs&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.sys&lt;/code&gt; - device drivers or low-level system components&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.scr&lt;/code&gt; - screen saver files, run by the system when the screen saver is activated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pe-structure&#34;&gt;PE Structure&lt;/h3&gt;
+&lt;p&gt;The structure contains the following sections&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[[#DOS Header]]&lt;/li&gt;
+&lt;li&gt;[[#DOS Stub]]&lt;/li&gt;
+&lt;li&gt;[[#NT Headers]]
+&lt;ul&gt;
+&lt;li&gt;NT Signature&lt;/li&gt;
+&lt;li&gt;File Header&lt;/li&gt;
+&lt;li&gt;Optional Header&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;[[#Data Directories]]&lt;/li&gt;
+&lt;li&gt;[[#Sections]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dos-header&#34;&gt;DOS Header&lt;/h3&gt;
+&lt;p&gt;At the start of PE files, always prefixed with two bytes, &lt;code&gt;0x4D&lt;/code&gt; and &lt;code&gt;0x5A&lt;/code&gt;, or &lt;code&gt;MZ&lt;/code&gt; in ASCII.&lt;/p&gt;</description>
+      <content>&lt;h3 id=&#34;pe-file-extensions&#34;&gt;PE File Extensions&lt;/h3&gt;
+&lt;p&gt;The following is the list of PE file extensions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.exe&lt;/code&gt; - run directly by the user, contains the main entry point.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.dll&lt;/code&gt; - dynamic-link library that can be used by multiple programs&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.sys&lt;/code&gt; - device drivers or low-level system components&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.scr&lt;/code&gt; - screen saver files, run by the system when the screen saver is activated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pe-structure&#34;&gt;PE Structure&lt;/h3&gt;
+&lt;p&gt;The structure contains the following sections&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[[#DOS Header]]&lt;/li&gt;
+&lt;li&gt;[[#DOS Stub]]&lt;/li&gt;
+&lt;li&gt;[[#NT Headers]]
+&lt;ul&gt;
+&lt;li&gt;NT Signature&lt;/li&gt;
+&lt;li&gt;File Header&lt;/li&gt;
+&lt;li&gt;Optional Header&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;[[#Data Directories]]&lt;/li&gt;
+&lt;li&gt;[[#Sections]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dos-header&#34;&gt;DOS Header&lt;/h3&gt;
+&lt;p&gt;At the start of PE files, always prefixed with two bytes, &lt;code&gt;0x4D&lt;/code&gt; and &lt;code&gt;0x5A&lt;/code&gt;, or &lt;code&gt;MZ&lt;/code&gt; in ASCII.&lt;/p&gt;
+&lt;p&gt;The data structure of DOS Header (_IMAGE_DOS_HEADER) is listed as below:&lt;/p&gt;
+&lt;p&gt;The important members of the structure are &lt;code&gt;e_magic&lt;/code&gt; and &lt;code&gt;e_lfanew&lt;/code&gt;, the former is used to store the magic number &lt;code&gt;MZ&lt;/code&gt; to file format recognition, the latter is a 4-byte value that store the offset to the start of the NT Header.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;e_lfanew&lt;/code&gt; is always located at an offset of &lt;code&gt;0x3C&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _IMAGE_DOS_HEADER {      &lt;span style=&#34;color:#75715e&#34;&gt;// DOS .EXE header
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_magic;                     &lt;span style=&#34;color:#75715e&#34;&gt;// Magic number
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_cblp;                      &lt;span style=&#34;color:#75715e&#34;&gt;// Bytes on last page of file
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_cp;                        &lt;span style=&#34;color:#75715e&#34;&gt;// Pages in file
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_crlc;                      &lt;span style=&#34;color:#75715e&#34;&gt;// Relocations
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_cparhdr;                   &lt;span style=&#34;color:#75715e&#34;&gt;// Size of header in paragraphs
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_minalloc;                  &lt;span style=&#34;color:#75715e&#34;&gt;// Minimum extra paragraphs needed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_maxalloc;                  &lt;span style=&#34;color:#75715e&#34;&gt;// Maximum extra paragraphs needed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_ss;                        &lt;span style=&#34;color:#75715e&#34;&gt;// Initial (relative) SS value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_sp;                        &lt;span style=&#34;color:#75715e&#34;&gt;// Initial SP value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_csum;                      &lt;span style=&#34;color:#75715e&#34;&gt;// Checksum
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_ip;                        &lt;span style=&#34;color:#75715e&#34;&gt;// Initial IP value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_cs;                        &lt;span style=&#34;color:#75715e&#34;&gt;// Initial (relative) CS value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_lfarlc;                    &lt;span style=&#34;color:#75715e&#34;&gt;// File address of relocation table
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_ovno;                      &lt;span style=&#34;color:#75715e&#34;&gt;// Overlay number
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_res[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;];                    &lt;span style=&#34;color:#75715e&#34;&gt;// Reserved words
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_oemid;                     &lt;span style=&#34;color:#75715e&#34;&gt;// OEM identifier (for e_oeminfo)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_oeminfo;                   &lt;span style=&#34;color:#75715e&#34;&gt;// OEM information; e_oemid specific
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    WORD   e_res2[&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;];                  &lt;span style=&#34;color:#75715e&#34;&gt;// Reserved words
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    LONG   e_lfanew;                    &lt;span style=&#34;color:#75715e&#34;&gt;// Offset to the NT header
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  } IMAGE_DOS_HEADER, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PIMAGE_DOS_HEADER;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;dos-stub&#34;&gt;DOS Stub&lt;/h3&gt;
+&lt;p&gt;This section is created for back compatibility, when executing the program in DOS mode, the error message &lt;code&gt;This program cannot be run in DOS mode&lt;/code&gt; is printed.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ad-tip&#34; data-lang=&#34;ad-tip&#34;&gt;The error message can be changed by the programmer at compile time.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;nt-header&#34;&gt;NT Header&lt;/h3&gt;
+&lt;p&gt;The section starts with a signature, &lt;code&gt;PE&lt;/code&gt; is usually the string value of the signature.&lt;/p&gt;
+&lt;p&gt;The data structure of NT Header varies with the machine&amp;rsquo;s architecture. The &lt;code&gt;OptionalHeader&lt;/code&gt; is the only difference between the two versions.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// 32-bit
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _IMAGE_NT_HEADERS {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DWORD                   Signature;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  IMAGE_FILE_HEADER       FileHeader;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  IMAGE_OPTIONAL_HEADER32 OptionalHeader;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} IMAGE_NT_HEADERS32, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PIMAGE_NT_HEADERS32;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// 64-bit
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _IMAGE_NT_HEADERS64 {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DWORD                   Signature;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    IMAGE_FILE_HEADER       FileHeader;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    IMAGE_OPTIONAL_HEADER64 OptionalHeader;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} IMAGE_NT_HEADERS64, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PIMAGE_NT_HEADERS64;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are two headers that reside in NT Header
+&lt;code&gt;FileHeader&lt;/code&gt; and &lt;code&gt;OptionalHeader&lt;/code&gt;, both of which include a large amount of information about the file.&lt;/p&gt;
+&lt;h5 id=&#34;file-header&#34;&gt;File Header&lt;/h5&gt;
+&lt;p&gt;Contains the following important information&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;NumberOfSections&lt;/code&gt; - number of sections in the file&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Characteristics&lt;/code&gt; - specify whether the file is a library of a console program&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SizeOfOptionalHeader&lt;/code&gt; - the size of the following optional header&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;optional-header&#34;&gt;Optional Header&lt;/h5&gt;
+&lt;p&gt;The size of optional header varies with the machine&amp;rsquo;s architecture&lt;/p&gt;
+&lt;p&gt;Some members that use &lt;code&gt;DWORD&lt;/code&gt; as their data type on a 32-bit machine will use &lt;code&gt;ULONGLONG&lt;/code&gt; on a 64-bit machine instead.&lt;/p&gt;
+&lt;p&gt;Contains the following critical members:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Magic&lt;/code&gt; - describes whether the image is 32-bit or 64-bit&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MajorOperatingSystemVersion&lt;/code&gt; - Required major operating system version (eg. 10, 11)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MinorOperatingSystemVersion&lt;/code&gt; - Required minor operating system version (eg. 1511, 1507)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SizeOfCode&lt;/code&gt; - size of the &lt;code&gt;.text&lt;/code&gt; section&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;AddressOfEntryPoint&lt;/code&gt; - offset to the entry point of the file (eg. main)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BaseOfCode&lt;/code&gt; - offset to the &lt;code&gt;.text&lt;/code&gt; section&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SizeOfImage&lt;/code&gt; -  size of the image in bytes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ImageBase&lt;/code&gt; - the preferred address of how the application is to be loaded into memory. Due to ASLR, it is rarely realized.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DataDirectory&lt;/code&gt; - an array of IMAGE_DATA_DIRECTORY, contains the directories in a PE file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;data-directories&#34;&gt;Data Directories&lt;/h3&gt;
+&lt;p&gt;An important member in the optional header, an array of size 16 (IMAGE_NUMBEROF_DIRECTORY_ENTRIES)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _IMAGE_DATA_DIRECTORY {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	DWORD VirtualAddress;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	DWORD Size;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} IMAGE_DATA_DIRECTORY, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PIMAGE_DATA_DIRECTORY;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Each entry includes some data about a PE section of a data table, the following is the corresponding information of each index&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;IMAGE_DIRECTORY_ENTRY_EXPORT          &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Export Directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_IMPORT          &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Import Directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_RESOURCE        &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Resource Directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_EXCEPTION       &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Exception Directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_SECURITY        &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Security Directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_BASERELOC       &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Base Relocation Table
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_DEBUG           &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Debug Directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_ARCHITECTURE    &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Architecture Specific Data
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_GLOBALPTR       &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// RVA of GP
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_TLS             &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// TLS Directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG    &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Load Configuration Directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT   &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Bound Import Directory in headers
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_IAT            &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Import Address Table
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT   &lt;span style=&#34;color:#ae81ff&#34;&gt;13&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// Delay Load Import Descriptors
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR &lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt;   &lt;span style=&#34;color:#75715e&#34;&gt;// COM Runtime descriptor
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Export Directory&lt;/code&gt; and &lt;code&gt;Import Address Table&lt;/code&gt; are two interesting directories.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Export Directory&lt;/code&gt; - contains information about functions and variables that are exported from the executable. This directory is generally found in DLLs that export functions (eg. &lt;code&gt;kernel32.dll&lt;/code&gt; exporting &lt;code&gt;CreateFileA&lt;/code&gt;)
+&lt;code&gt;Image Address Table&lt;/code&gt; - contains information about the addresses of functions that are imported from other executables. (eg. &lt;code&gt;app.exe&lt;/code&gt; importing &lt;code&gt;CreateFileA&lt;/code&gt; from &lt;code&gt;kernel32.dll&lt;/code&gt;)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ad-note&#34; data-lang=&#34;ad-note&#34;&gt;Hierarchy of the members
+
+- NT Headers
+	- Optional Header
+		- Data Directories
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;sections&#34;&gt;Sections&lt;/h3&gt;
+&lt;p&gt;The number of sections in a PE file is dynamic, since the section can be added be a compiler or manually added later on. &lt;code&gt;IMAGE_FILE_HEADER.NumberOfSections&lt;/code&gt; helps determine the number.&lt;/p&gt;
+&lt;p&gt;Common sections are listed as below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.text&lt;/code&gt; - contains executable codes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.data&lt;/code&gt; - contains initialized data&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.rdata&lt;/code&gt; - contains read only data&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.idata&lt;/code&gt; - contains the import tables, used by PE loader to determine which DLL files need to be loaded to the process, along with the functions that are being used from each DLL.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.reloc&lt;/code&gt; - contains information on how to fix up memory addresses.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.rsrc&lt;/code&gt; - contains resources such as icons, bitmaps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Each PE section has an &lt;code&gt;IMAGE_SECTION_HEADER&lt;/code&gt; data structure. These sections are saved under the NT headers, and are stacked up together.&lt;/p&gt;
+&lt;p&gt;Each structure represents a section&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; _IMAGE_SECTION_HEADER {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  BYTE  Name[IMAGE_SIZEOF_SHORT_NAME];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;union&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DWORD PhysicalAddress;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DWORD VirtualSize;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  } Misc;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DWORD VirtualAddress;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DWORD SizeOfRawData;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DWORD PointerToRawData;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DWORD PointerToRelocations;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DWORD PointerToLinenumbers;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  WORD  NumberOfRelocations;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  WORD  NumberOfLinenumbers;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DWORD Characteristics;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} IMAGE_SECTION_HEADER, &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;PIMAGE_SECTION_HEADER;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Name&lt;/code&gt; - the name of the section&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PhysicalAddress&lt;/code&gt; / &lt;code&gt;VirtualSize&lt;/code&gt; - the size of the section when it&amp;rsquo;s in memory.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;VirtualAddress&lt;/code&gt; - offset of the start of the section in memory.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </item>
+    
     <item>
       <title>About</title>
-      <link>https://blog.ydderf.dev/about/</link>
+      <link>//localhost:1313/about/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.ydderf.dev/about/</guid>
+      <guid>//localhost:1313/about/</guid>
       <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;
 &lt;p&gt;Hi, I&amp;rsquo;m ydderf (freddy[::-1])&lt;/p&gt;
 &lt;p&gt;currently a college student major in mechanical engineering and computer science&lt;/p&gt;
@@ -30,10 +218,10 @@
     
     <item>
       <title>Arch Linux Installation</title>
-      <link>https://blog.ydderf.dev/posts/arch-linux-installation/</link>
+      <link>//localhost:1313/posts/arch-linux-installation/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.ydderf.dev/posts/arch-linux-installation/</guid>
+      <guid>//localhost:1313/posts/arch-linux-installation/</guid>
       <description>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
 &lt;h5 id=&#34;install-targets&#34;&gt;install targets&lt;/h5&gt;
 &lt;ul&gt;
@@ -119,22 +307,22 @@ to get the network access back, the iso file that installed the operating system
     
     <item>
       <title>Windows DLL</title>
-      <link>https://blog.ydderf.dev/posts/windows-dll/</link>
+      <link>//localhost:1313/posts/windows-dll/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.ydderf.dev/posts/windows-dll/</guid>
+      <guid>//localhost:1313/posts/windows-dll/</guid>
       <description>&lt;h1 id=&#34;windows-dll&#34;&gt;Windows DLL&lt;/h1&gt;
 &lt;p&gt;DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.&lt;/p&gt;
 &lt;h3 id=&#34;system-wide-dll-base-address&#34;&gt;System-wide DLL Base Address&lt;/h3&gt;
 &lt;p&gt;For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ydderf.dev/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;dll-entry-point&#34;&gt;DLL Entry Point&lt;/h3&gt;
 &lt;p&gt;Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.&lt;/p&gt;</description>
       <content>&lt;h1 id=&#34;windows-dll&#34;&gt;Windows DLL&lt;/h1&gt;
 &lt;p&gt;DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.&lt;/p&gt;
 &lt;h3 id=&#34;system-wide-dll-base-address&#34;&gt;System-wide DLL Base Address&lt;/h3&gt;
 &lt;p&gt;For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ydderf.dev/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;dll-entry-point&#34;&gt;DLL Entry Point&lt;/h3&gt;
 &lt;p&gt;Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.&lt;/p&gt;
 &lt;p&gt;There are 4 possibilities for the entry point being called:&lt;/p&gt;
@@ -225,10 +413,10 @@ The following assumes that &lt;code&gt;user32.dll&lt;/code&gt; is not automatica
     
     <item>
       <title>Windows Process</title>
-      <link>https://blog.ydderf.dev/posts/windows-process/</link>
+      <link>//localhost:1313/posts/windows-process/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.ydderf.dev/posts/windows-process/</guid>
+      <guid>//localhost:1313/posts/windows-process/</guid>
       <description>&lt;h1 id=&#34;windows-process&#34;&gt;Windows Process&lt;/h1&gt;
 &lt;h3 id=&#34;memory-types&#34;&gt;Memory Types&lt;/h3&gt;
 &lt;p&gt;A process can have 3 different types of memory&lt;/p&gt;

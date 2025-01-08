@@ -4,7 +4,7 @@ date: 2025-01-06
 tags:
   - Linux
   - Kernel
-Description: Some targets that should be installed when installing arch linux on the host
+Description: "Arch Linux Installation: Some targets that should be installed when installing arch linux on the host"
 ---
 # Arch Linux Installation
 
