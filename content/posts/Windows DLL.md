@@ -5,7 +5,7 @@ tags:
   - Windows
   - WindowsAPI
   - Malware
-Description: "Windows DLL: An introduction about Windows DLLs, including how to export the function or run the DLLs directly"
+Description: An introduction about Windows DLLs, including how to export the function or run the DLLs directly
 ---
 # Windows DLL
 

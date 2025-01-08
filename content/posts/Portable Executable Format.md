@@ -3,7 +3,7 @@ title: Portable Executable Format
 date: 2025-01-07
 tags:
   - Windows
-Description: "Portable Executable Format: Contains the structure of Windows executable file format and some introduction about the function of each part in the structure."
+Description: Contains the structure of Windows executable file format and some introduction about the function of each part in the structure.
 ---
 ### PE File Extensions
 

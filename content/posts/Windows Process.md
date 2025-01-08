@@ -4,7 +4,7 @@ date: 2025-01-06
 tags:
   - Windows
   - OperatingSystem
-Description: "Windows Process: Contains information about the resources used by a process on windows, and the characteristics a process can have."
+Description: Contains information about the resources used by a process on windows, and the characteristics a process can have.
 ---
 # Windows Process
 
