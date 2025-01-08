@@ -294,14 +294,22 @@ to get the network access back, the iso file that installed the operating system
 &lt;p&gt;DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.&lt;/p&gt;
 &lt;h3 id=&#34;system-wide-dll-base-address&#34;&gt;System-wide DLL Base Address&lt;/h3&gt;
 &lt;p&gt;For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ydderf.dev/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ydderf.dev/images/systemwidedll.png&#34; 
+     alt=&#34;Image Description&#34; 
+      
+     data-zoomable&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;dll-entry-point&#34;&gt;DLL Entry Point&lt;/h3&gt;
 &lt;p&gt;Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.&lt;/p&gt;</description>
       <content>&lt;h1 id=&#34;windows-dll&#34;&gt;Windows DLL&lt;/h1&gt;
 &lt;p&gt;DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.&lt;/p&gt;
 &lt;h3 id=&#34;system-wide-dll-base-address&#34;&gt;System-wide DLL Base Address&lt;/h3&gt;
 &lt;p&gt;For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ydderf.dev/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ydderf.dev/images/systemwidedll.png&#34; 
+     alt=&#34;Image Description&#34; 
+      
+     data-zoomable&gt;
+&lt;/p&gt;
 &lt;h3 id=&#34;dll-entry-point&#34;&gt;DLL Entry Point&lt;/h3&gt;
 &lt;p&gt;Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.&lt;/p&gt;
 &lt;p&gt;There are 4 possibilities for the entry point being called:&lt;/p&gt;

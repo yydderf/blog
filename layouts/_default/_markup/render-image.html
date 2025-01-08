@@ -1,0 +1,4 @@
+<img src="{{ .Destination | safeURL }}" 
+     alt="{{ .Text | safeHTMLAttr }}" 
+     {{ with .Title }}title="{{ . | safeHTMLAttr }}"{{ end }} 
+     data-zoomable>
