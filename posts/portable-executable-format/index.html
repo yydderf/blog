@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Portable Executable Format :: ydderf&#39;s blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portable Executable Format: Contains the structure of Windows executable file format and some introduction about the function of each part in the structure." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="//localhost:1313/posts/portable-executable-format/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/buttons.min.2bc533403a27dfe0e93105a92502b42ce4587e2e4a87d9f7d349e51e16e09478.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/code.min.00125962708925857e7b66dbc58391d55be1191a3d0ce2034de8c9cd2c481c36.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/fonts.min.4881f0c525f3ce2a1864fb6e96676396cebe1e6fcef1933e8e1dde7041004fb5.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/footer.min.4a40c23d262136283e3a77660b9ed4fdcceb18c394b396ec986c1b7e9d8e43ac.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/header.min.b6fb4423cf82a9f9d7abc9cd010223fa3d70a6526a3f28f8e17d814c06e18f9e.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/main.min.fe8dc560fccb53a458b0db19ccb7b265764ac46b68596b7e099c6793054dd457.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/menu.min.83637a90d903026bc280d3f82f96ceb06c5fc72b7c1a8d686afb5bbf818a29f7.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/pagination.min.82f6400eae7c7c6dc3c866733c2ec0579e4089608fea69400ff85b3880aa0d3c.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/post.min.738496ff25a196361f1c52a33bc15252cce3ea1e34e6a9af681bafa4d1452a95.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/prism.min.9023bbc24533d09e97a51a0a42a5a7bfe4c591ae167c5551fb1d2191d11977c0.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/syntax.min.cc789ed9377260d7949ea4c18781fc58959a89287210fe4edbff44ebfc1511b6.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/terminal.min.4b367d85d0d0061435650561285afed36c46a7cf8dc6d7ed5642d98e589fa622.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+<link rel="stylesheet" href="//localhost:1313/terminal.css">
+
+
+
+
+<link rel="shortcut icon" href="//localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Portable Executable Format">
+<meta property="og:description" content="Portable Executable Format: Contains the structure of Windows executable file format and some introduction about the function of each part in the structure." />
+<meta property="og:url" content="//localhost:1313/posts/portable-executable-format/" />
+<meta property="og:site_name" content="ydderf&#39;s blog" />
+
+  <meta property="og:image" content="//localhost:1313/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2025-01-07 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ydderf&#39;s blog
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/yydderf">Projects</a></li>
+        
+      
+        
+          <li><a href="/tags">Tags</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/yydderf" >Projects</a></li>
+        
+      
+        
+          <li><a href="/tags" >Tags</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/portable-executable-format/">Portable Executable Format</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-01-07&nbsp;[Updated:  2025-01-07]</time><span class="post-reading-time">5 min read (1004 words)</span></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="//localhost:1313/tags/windows/">Windows</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h3 id="pe-file-extensions">PE File Extensions<a href="#pe-file-extensions" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>The following is the list of PE file extensions:</p>
+<ul>
+<li><code>.exe</code> - run directly by the user, contains the main entry point.</li>
+<li><code>.dll</code> - dynamic-link library that can be used by multiple programs</li>
+<li><code>.sys</code> - device drivers or low-level system components</li>
+<li><code>.scr</code> - screen saver files, run by the system when the screen saver is activated.</li>
+</ul>
+<h3 id="pe-structure">PE Structure<a href="#pe-structure" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>The structure contains the following sections</p>
+<ul>
+<li>[[#DOS Header]]</li>
+<li>[[#DOS Stub]]</li>
+<li>[[#NT Headers]]
+<ul>
+<li>NT Signature</li>
+<li>File Header</li>
+<li>Optional Header</li>
+</ul>
+</li>
+<li>[[#Data Directories]]</li>
+<li>[[#Sections]]</li>
+</ul>
+<h3 id="dos-header">DOS Header<a href="#dos-header" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>At the start of PE files, always prefixed with two bytes, <code>0x4D</code> and <code>0x5A</code>, or <code>MZ</code> in ASCII.</p>
+<p>The data structure of DOS Header (_IMAGE_DOS_HEADER) is listed as below:</p>
+<p>The important members of the structure are <code>e_magic</code> and <code>e_lfanew</code>, the former is used to store the magic number <code>MZ</code> to file format recognition, the latter is a 4-byte value that store the offset to the start of the NT Header.</p>
+<p><code>e_lfanew</code> is always located at an offset of <code>0x3C</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _IMAGE_DOS_HEADER {      <span style="color:#75715e">// DOS .EXE header
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_magic;                     <span style="color:#75715e">// Magic number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_cblp;                      <span style="color:#75715e">// Bytes on last page of file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_cp;                        <span style="color:#75715e">// Pages in file
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_crlc;                      <span style="color:#75715e">// Relocations
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_cparhdr;                   <span style="color:#75715e">// Size of header in paragraphs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_minalloc;                  <span style="color:#75715e">// Minimum extra paragraphs needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_maxalloc;                  <span style="color:#75715e">// Maximum extra paragraphs needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_ss;                        <span style="color:#75715e">// Initial (relative) SS value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_sp;                        <span style="color:#75715e">// Initial SP value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_csum;                      <span style="color:#75715e">// Checksum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_ip;                        <span style="color:#75715e">// Initial IP value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_cs;                        <span style="color:#75715e">// Initial (relative) CS value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_lfarlc;                    <span style="color:#75715e">// File address of relocation table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_ovno;                      <span style="color:#75715e">// Overlay number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_res[<span style="color:#ae81ff">4</span>];                    <span style="color:#75715e">// Reserved words
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_oemid;                     <span style="color:#75715e">// OEM identifier (for e_oeminfo)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_oeminfo;                   <span style="color:#75715e">// OEM information; e_oemid specific
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    WORD   e_res2[<span style="color:#ae81ff">10</span>];                  <span style="color:#75715e">// Reserved words
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    LONG   e_lfanew;                    <span style="color:#75715e">// Offset to the NT header
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  } IMAGE_DOS_HEADER, <span style="color:#f92672">*</span>PIMAGE_DOS_HEADER;
+</span></span></code></pre></div><h3 id="dos-stub">DOS Stub<a href="#dos-stub" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>This section is created for back compatibility, when executing the program in DOS mode, the error message <code>This program cannot be run in DOS mode</code> is printed.</p>
+<pre tabindex="0"><code class="language-ad-tip" data-lang="ad-tip">The error message can be changed by the programmer at compile time.
+</code></pre><h3 id="nt-header">NT Header<a href="#nt-header" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>The section starts with a signature, <code>PE</code> is usually the string value of the signature.</p>
+<p>The data structure of NT Header varies with the machine&rsquo;s architecture. The <code>OptionalHeader</code> is the only difference between the two versions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/// 32-bit
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _IMAGE_NT_HEADERS {
+</span></span><span style="display:flex;"><span>  DWORD                   Signature;
+</span></span><span style="display:flex;"><span>  IMAGE_FILE_HEADER       FileHeader;
+</span></span><span style="display:flex;"><span>  IMAGE_OPTIONAL_HEADER32 OptionalHeader;
+</span></span><span style="display:flex;"><span>} IMAGE_NT_HEADERS32, <span style="color:#f92672">*</span>PIMAGE_NT_HEADERS32;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/// 64-bit
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _IMAGE_NT_HEADERS64 {
+</span></span><span style="display:flex;"><span>    DWORD                   Signature;
+</span></span><span style="display:flex;"><span>    IMAGE_FILE_HEADER       FileHeader;
+</span></span><span style="display:flex;"><span>    IMAGE_OPTIONAL_HEADER64 OptionalHeader;
+</span></span><span style="display:flex;"><span>} IMAGE_NT_HEADERS64, <span style="color:#f92672">*</span>PIMAGE_NT_HEADERS64;
+</span></span></code></pre></div><p>There are two headers that reside in NT Header
+<code>FileHeader</code> and <code>OptionalHeader</code>, both of which include a large amount of information about the file.</p>
+<h5 id="file-header">File Header<a href="#file-header" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>Contains the following important information</p>
+<ul>
+<li><code>NumberOfSections</code> - number of sections in the file</li>
+<li><code>Characteristics</code> - specify whether the file is a library of a console program</li>
+<li><code>SizeOfOptionalHeader</code> - the size of the following optional header</li>
+</ul>
+<h5 id="optional-header">Optional Header<a href="#optional-header" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<p>The size of optional header varies with the machine&rsquo;s architecture</p>
+<p>Some members that use <code>DWORD</code> as their data type on a 32-bit machine will use <code>ULONGLONG</code> on a 64-bit machine instead.</p>
+<p>Contains the following critical members:</p>
+<ul>
+<li><code>Magic</code> - describes whether the image is 32-bit or 64-bit</li>
+<li><code>MajorOperatingSystemVersion</code> - Required major operating system version (eg. 10, 11)</li>
+<li><code>MinorOperatingSystemVersion</code> - Required minor operating system version (eg. 1511, 1507)</li>
+<li><code>SizeOfCode</code> - size of the <code>.text</code> section</li>
+<li><code>AddressOfEntryPoint</code> - offset to the entry point of the file (eg. main)</li>
+<li><code>BaseOfCode</code> - offset to the <code>.text</code> section</li>
+<li><code>SizeOfImage</code> -  size of the image in bytes</li>
+<li><code>ImageBase</code> - the preferred address of how the application is to be loaded into memory. Due to ASLR, it is rarely realized.</li>
+<li><code>DataDirectory</code> - an array of IMAGE_DATA_DIRECTORY, contains the directories in a PE file.</li>
+</ul>
+<h3 id="data-directories">Data Directories<a href="#data-directories" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>An important member in the optional header, an array of size 16 (IMAGE_NUMBEROF_DIRECTORY_ENTRIES)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _IMAGE_DATA_DIRECTORY {
+</span></span><span style="display:flex;"><span>	DWORD VirtualAddress;
+</span></span><span style="display:flex;"><span>	DWORD Size;
+</span></span><span style="display:flex;"><span>} IMAGE_DATA_DIRECTORY, <span style="color:#f92672">*</span>PIMAGE_DATA_DIRECTORY;
+</span></span></code></pre></div><p>Each entry includes some data about a PE section of a data table, the following is the corresponding information of each index</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>IMAGE_DIRECTORY_ENTRY_EXPORT          <span style="color:#ae81ff">0</span>   <span style="color:#75715e">// Export Directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_IMPORT          <span style="color:#ae81ff">1</span>   <span style="color:#75715e">// Import Directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_RESOURCE        <span style="color:#ae81ff">2</span>   <span style="color:#75715e">// Resource Directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_EXCEPTION       <span style="color:#ae81ff">3</span>   <span style="color:#75715e">// Exception Directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_SECURITY        <span style="color:#ae81ff">4</span>   <span style="color:#75715e">// Security Directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_BASERELOC       <span style="color:#ae81ff">5</span>   <span style="color:#75715e">// Base Relocation Table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_DEBUG           <span style="color:#ae81ff">6</span>   <span style="color:#75715e">// Debug Directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_ARCHITECTURE    <span style="color:#ae81ff">7</span>   <span style="color:#75715e">// Architecture Specific Data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_GLOBALPTR       <span style="color:#ae81ff">8</span>   <span style="color:#75715e">// RVA of GP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_TLS             <span style="color:#ae81ff">9</span>   <span style="color:#75715e">// TLS Directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG    <span style="color:#ae81ff">10</span>   <span style="color:#75715e">// Load Configuration Directory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT   <span style="color:#ae81ff">11</span>   <span style="color:#75715e">// Bound Import Directory in headers
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_IAT            <span style="color:#ae81ff">12</span>   <span style="color:#75715e">// Import Address Table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT   <span style="color:#ae81ff">13</span>   <span style="color:#75715e">// Delay Load Import Descriptors
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR <span style="color:#ae81ff">14</span>   <span style="color:#75715e">// COM Runtime descriptor
+</span></span></span></code></pre></div><p><code>Export Directory</code> and <code>Import Address Table</code> are two interesting directories.</p>
+<p><code>Export Directory</code> - contains information about functions and variables that are exported from the executable. This directory is generally found in DLLs that export functions (eg. <code>kernel32.dll</code> exporting <code>CreateFileA</code>)
+<code>Image Address Table</code> - contains information about the addresses of functions that are imported from other executables. (eg. <code>app.exe</code> importing <code>CreateFileA</code> from <code>kernel32.dll</code>)</p>
+<pre tabindex="0"><code class="language-ad-note" data-lang="ad-note">Hierarchy of the members
+
+- NT Headers
+	- Optional Header
+		- Data Directories
+</code></pre><h3 id="sections">Sections<a href="#sections" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>The number of sections in a PE file is dynamic, since the section can be added be a compiler or manually added later on. <code>IMAGE_FILE_HEADER.NumberOfSections</code> helps determine the number.</p>
+<p>Common sections are listed as below:</p>
+<ul>
+<li><code>.text</code> - contains executable codes</li>
+<li><code>.data</code> - contains initialized data</li>
+<li><code>.rdata</code> - contains read only data</li>
+<li><code>.idata</code> - contains the import tables, used by PE loader to determine which DLL files need to be loaded to the process, along with the functions that are being used from each DLL.</li>
+<li><code>.reloc</code> - contains information on how to fix up memory addresses.</li>
+<li><code>.rsrc</code> - contains resources such as icons, bitmaps.</li>
+</ul>
+<p>Each PE section has an <code>IMAGE_SECTION_HEADER</code> data structure. These sections are saved under the NT headers, and are stacked up together.</p>
+<p>Each structure represents a section</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> _IMAGE_SECTION_HEADER {
+</span></span><span style="display:flex;"><span>  BYTE  Name[IMAGE_SIZEOF_SHORT_NAME];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">union</span> {
+</span></span><span style="display:flex;"><span>    DWORD PhysicalAddress;
+</span></span><span style="display:flex;"><span>    DWORD VirtualSize;
+</span></span><span style="display:flex;"><span>  } Misc;
+</span></span><span style="display:flex;"><span>  DWORD VirtualAddress;
+</span></span><span style="display:flex;"><span>  DWORD SizeOfRawData;
+</span></span><span style="display:flex;"><span>  DWORD PointerToRawData;
+</span></span><span style="display:flex;"><span>  DWORD PointerToRelocations;
+</span></span><span style="display:flex;"><span>  DWORD PointerToLinenumbers;
+</span></span><span style="display:flex;"><span>  WORD  NumberOfRelocations;
+</span></span><span style="display:flex;"><span>  WORD  NumberOfLinenumbers;
+</span></span><span style="display:flex;"><span>  DWORD Characteristics;
+</span></span><span style="display:flex;"><span>} IMAGE_SECTION_HEADER, <span style="color:#f92672">*</span>PIMAGE_SECTION_HEADER;
+</span></span></code></pre></div><ul>
+<li><code>Name</code> - the name of the section</li>
+<li><code>PhysicalAddress</code> / <code>VirtualSize</code> - the size of the section when it&rsquo;s in memory.</li>
+<li><code>VirtualAddress</code> - offset of the start of the section in memory.</li>
+</ul>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    
+    
+    
+      <a href="//localhost:1313/posts/arch-linux-installation/" class="button inline next">
+        Arch Linux Installation
+      </a>
+    
+  </div>
+</div>
+
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      <span>:: <a href="https://wepfont.com/another-tag/" target="_blank">Title font</a> made by Wahyu Eka Prasetya</span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
