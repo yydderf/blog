@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ydderf&#39;s blog</title>
-    <link>//localhost:1313/</link>
+    <link>https://blog.ydderf.dev/</link>
     <description>Recent content on ydderf&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 07 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ydderf.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Portable Executable Format</title>
-      <link>//localhost:1313/posts/portable-executable-format/</link>
+      <link>https://blog.ydderf.dev/posts/portable-executable-format/</link>
       <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/posts/portable-executable-format/</guid>
+      <guid>https://blog.ydderf.dev/posts/portable-executable-format/</guid>
       <description>&lt;h3 id=&#34;pe-file-extensions&#34;&gt;PE File Extensions&lt;/h3&gt;
 &lt;p&gt;The following is the list of PE file extensions:&lt;/p&gt;
 &lt;ul&gt;
@@ -197,10 +197,10 @@
     
     <item>
       <title>About</title>
-      <link>//localhost:1313/about/</link>
+      <link>https://blog.ydderf.dev/about/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/about/</guid>
+      <guid>https://blog.ydderf.dev/about/</guid>
       <description>&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;
 &lt;p&gt;Hi, I&amp;rsquo;m ydderf (freddy[::-1])&lt;/p&gt;
 &lt;p&gt;currently a college student major in mechanical engineering and computer science&lt;/p&gt;
@@ -218,10 +218,10 @@
     
     <item>
       <title>Arch Linux Installation</title>
-      <link>//localhost:1313/posts/arch-linux-installation/</link>
+      <link>https://blog.ydderf.dev/posts/arch-linux-installation/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/posts/arch-linux-installation/</guid>
+      <guid>https://blog.ydderf.dev/posts/arch-linux-installation/</guid>
       <description>&lt;h1 id=&#34;arch-linux-installation&#34;&gt;Arch Linux Installation&lt;/h1&gt;
 &lt;h5 id=&#34;install-targets&#34;&gt;install targets&lt;/h5&gt;
 &lt;ul&gt;
@@ -307,22 +307,22 @@ to get the network access back, the iso file that installed the operating system
     
     <item>
       <title>Windows DLL</title>
-      <link>//localhost:1313/posts/windows-dll/</link>
+      <link>https://blog.ydderf.dev/posts/windows-dll/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/posts/windows-dll/</guid>
+      <guid>https://blog.ydderf.dev/posts/windows-dll/</guid>
       <description>&lt;h1 id=&#34;windows-dll&#34;&gt;Windows DLL&lt;/h1&gt;
 &lt;p&gt;DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.&lt;/p&gt;
 &lt;h3 id=&#34;system-wide-dll-base-address&#34;&gt;System-wide DLL Base Address&lt;/h3&gt;
 &lt;p&gt;For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ydderf.dev/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;dll-entry-point&#34;&gt;DLL Entry Point&lt;/h3&gt;
 &lt;p&gt;Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.&lt;/p&gt;</description>
       <content>&lt;h1 id=&#34;windows-dll&#34;&gt;Windows DLL&lt;/h1&gt;
 &lt;p&gt;DLL is a shared library that is a module that cannot be executed directly, but needs to be loaded to use the exported functions.&lt;/p&gt;
 &lt;h3 id=&#34;system-wide-dll-base-address&#34;&gt;System-wide DLL Base Address&lt;/h3&gt;
 &lt;p&gt;For optimization purposes, some DLLs are loaded at the same base address in the virtual space of all processes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;//localhost:1313/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ydderf.dev/images/systemwidedll.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;dll-entry-point&#34;&gt;DLL Entry Point&lt;/h3&gt;
 &lt;p&gt;Since DLLs are loaded by executables, they can specify an entry point function that executes code when certain actions occur.&lt;/p&gt;
 &lt;p&gt;There are 4 possibilities for the entry point being called:&lt;/p&gt;
@@ -413,10 +413,10 @@ The following assumes that &lt;code&gt;user32.dll&lt;/code&gt; is not automatica
     
     <item>
       <title>Windows Process</title>
-      <link>//localhost:1313/posts/windows-process/</link>
+      <link>https://blog.ydderf.dev/posts/windows-process/</link>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/posts/windows-process/</guid>
+      <guid>https://blog.ydderf.dev/posts/windows-process/</guid>
       <description>&lt;h1 id=&#34;windows-process&#34;&gt;Windows Process&lt;/h1&gt;
 &lt;h3 id=&#34;memory-types&#34;&gt;Memory Types&lt;/h3&gt;
 &lt;p&gt;A process can have 3 different types of memory&lt;/p&gt;
