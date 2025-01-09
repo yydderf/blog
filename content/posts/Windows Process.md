@@ -5,6 +5,7 @@ tags:
   - Windows
   - OperatingSystem
 Description: Contains information about the resources used by a process on windows, and the characteristics a process can have.
+cover:
 ---
 # Windows Process
 

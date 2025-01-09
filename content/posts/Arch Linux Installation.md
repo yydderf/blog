@@ -5,6 +5,7 @@ tags:
   - Linux
   - Kernel
 Description: Some targets that should be installed when installing arch linux on the host
+cover:
 ---
 # Arch Linux Installation
 

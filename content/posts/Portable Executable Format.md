@@ -4,6 +4,7 @@ date: 2025-01-07
 tags:
   - Windows
 Description: Contains the structure of Windows executable file format and some introduction about the function of each part in the structure.
+cover:
 ---
 ### PE File Extensions
 

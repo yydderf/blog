@@ -6,6 +6,7 @@ tags:
   - WindowsAPI
   - Malware
 Description: An introduction about Windows DLLs, including how to export the function or run the DLLs directly
+cover:
 ---
 # Windows DLL
 
